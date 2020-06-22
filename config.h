@@ -92,38 +92,67 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+unsigned int paletteindex = 0;
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+static const char *colorpalettes[2][258] = {
+	{
+		/* 8 normal colors */
+		"black",
+		"red3",
+		"green3",
+		"yellow3",
+		"blue2",
+		"magenta3",
+		"cyan3",
+		"gray90",
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+		/* 8 bright colors */
+		"gray50",
+		"red",
+		"green",
+		"yellow",
+		"#5c5cff",
+		"magenta",
+		"cyan",
+		"white",
 
-	[255] = 0,
+		[255] = 0,
 
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+		/* more colors can be added after 255 to use with DefaultXX */
+		"#cccccc",
+		"#555555",
+	}, {
+		/* 8 normal colors */
+		"red3",
+		"green3",
+		"yellow3",
+		"blue2",
+		"magenta3",
+		"cyan3",
+		"gray90",
+		"black",
+
+		/* 8 bright colors */
+		"gray50",
+		"green",
+		"yellow",
+		"#5c5cff",
+		"magenta",
+		"cyan",
+		"white",
+		"red",
+
+		[255] = 0,
+
+		/* more colors can be added after 255 to use with DefaultXX */
+		"#cccccc",
+		"#555555",
+	}
 };
 
 
 /*
- * Default colors (colorname index)
+ * Default colors (colorpalettes index)
  * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 7;
@@ -198,6 +227,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ TERMMOD,              XK_P,           nextpalette,    {.i =  0} },
 };
 
 /*
