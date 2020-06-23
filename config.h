@@ -93,36 +93,35 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 unsigned int paletteindex = 0;
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorpalettes[2][258] = {
+static const char *colorpalettes[2][260] = {
 	{
-        /* 8 normal colors */
-        "#073642",
-        "#dc322f",
-        "#859900",
-        "#b58900",
-        "#268bd2",
-        "#d33682",
-        "#2aa198",
-        "#eee8d5",
+		/* solarized dark */
+		"#073642", /*  0: black    */
+		"#dc322f", /*  1: red      */
+		"#859900", /*  2: green    */
+		"#b58900", /*  3: yellow   */
+		"#268bd2", /*  4: blue     */
+		"#d33682", /*  5: magenta  */
+		"#2aa198", /*  6: cyan     */
+		"#eee8d5", /*  7: white    */
+		"#275662", /*  8: brblack  (custom) */
+		"#cb4b16", /*  9: brred    */
+		"#586e75", /* 10: brgreen  */
+		"#657b83", /* 11: bryellow */
+		"#839496", /* 12: brblue   */
+		"#6c71c4", /* 13: brmagenta*/
+		"#93a1a1", /* 14: brcyan   */
+		"#fdf6e3", /* 15: brwhite  */
 
-        /* 8 bright colors */
-        "#002b36",
-        "#cb4b16",
-        "#586e75",
-        "#657b83",
-        "#839496",
-        "#6c71c4",
-        "#93a1a1",
-        "#fdf6e3",
+		[255] = 0,
 
-        [255] = 0,
-
-        /* more colors can be added after 255 to use with DefaultXX */
-        "#002b36",
-        "#839496",
-        "#002b36",
-        "#839496",
-	}, {
+		/* more colors can be added after 255 to use with DefaultXX */
+		"#073642", /*  8: brblack  */
+		"#839496", /* 12: brblue   */
+		"#fdf6e3", /* 15: brwhite  */
+		"#93a1a1", /* 14: brcyan   */
+	},
+	{
 		/* 8 normal colors */
 		"black",
 		"red3",
@@ -153,10 +152,9 @@ static const char *colorpalettes[2][258] = {
 	}
 };
 
-
 /*
  * Default colors (colorpalettes index)
- * foreground, background, cursor, reverse cursor
+ * background, foreground, reverse cursor, cursor
  */
 unsigned int defaultbg = 256;
 unsigned int defaultfg = 257;
