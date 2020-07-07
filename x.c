@@ -470,7 +470,8 @@ bpress(XEvent *e)
 	struct timespec now;
 	int snap;
 
-	if (IS_SET(MODE_MOUSE) && !(e->xbutton.state & forcemousemod)) {
+	if (IS_SET(MODE_MOUSE) && (e->xbutton.state & forcemousemod)) {
+		e->xbutton.state = e->xbutton.state & (~forcemousemod); // we remove the key used to force the pass-through
 		mousereport(e);
 		return;
 	}
@@ -692,7 +693,8 @@ xsetsel(char *str)
 void
 brelease(XEvent *e)
 {
-	if (IS_SET(MODE_MOUSE) && !(e->xbutton.state & forcemousemod)) {
+	if (IS_SET(MODE_MOUSE) && (e->xbutton.state & forcemousemod)) {
+		e->xbutton.state = e->xbutton.state & (~forcemousemod); // we remove the key used to force the pass-through
 		mousereport(e);
 		return;
 	}
@@ -706,7 +708,8 @@ brelease(XEvent *e)
 void
 bmotion(XEvent *e)
 {
-	if (IS_SET(MODE_MOUSE) && !(e->xbutton.state & forcemousemod)) {
+	if (IS_SET(MODE_MOUSE) && (e->xbutton.state & forcemousemod)) {
+		e->xbutton.state = e->xbutton.state & (~forcemousemod); // we remove the key used to force the pass-through
 		mousereport(e);
 		return;
 	}
