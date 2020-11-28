@@ -1339,6 +1339,7 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
 			 * Xft and fontconfig are design failures.
 			 */
 			fcpattern = FcPatternDuplicate(font->pattern);
+			FcPatternAddBool(fcpattern, FC_COLOR, FcFalse);
 			fccharset = FcCharSetCreate();
 
 			FcCharSetAddChar(fccharset, rune);
