@@ -706,17 +706,13 @@ xsetsel(char *str)
 void
 brelease(XEvent *e)
 {
-<<<<<<< HEAD
 	int btn = e->xbutton.button;
 
 	if (1 <= btn && btn <= 11)
 		buttons &= ~(1 << (btn-1));
 
-	if (IS_SET(MODE_MOUSE) && !(e->xbutton.state & forcemousemod)) {
-=======
 	if (IS_SET(MODE_MOUSE) && (e->xbutton.state & forcemousemod)) {
 		e->xbutton.state = e->xbutton.state & (~forcemousemod); // we remove the key used to force the pass-through
->>>>>>> 02b0bbf (Invert the Shift-click behavour: do not forward the mouse events by)
 		mousereport(e);
 		return;
 	}
