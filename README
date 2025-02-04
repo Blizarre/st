@@ -4,7 +4,7 @@ st is a simple terminal emulator for X which sucks less.
 
 This fork is managed by Simon Marache (https://github.com/Blizarre/st). The main changes:
 - default to a solarized color theme
-- added an alternative high-contrast mode (Crtl-Shift p)
+- added an alternative high-contrast mode (Crtl-Shift backSpace)
 - use tmux as the default terminal manager
 - only forward mouse informations if Shift is pressed (inverted the original behavior)
 
